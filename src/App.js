@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, Fragment } from 'react'
+import Form from './components/Form'
 
 function App() {
   // useState retorna 2 funciones
@@ -7,7 +8,17 @@ function App() {
   const [appointment, setAppointment] = useState()
   console.log(appointment)
   return (
-    <h1>Hola</h1>
+    <Fragment>
+      <h1>Administrador de pacientes</h1>
+      <div className='container'>
+        <div className="row">
+          <div className="one-half column">
+            <Form />
+          </div>
+          <div className="one-half column"></div>
+        </div>
+      </div>
+    </Fragment>
   )
 }
 
