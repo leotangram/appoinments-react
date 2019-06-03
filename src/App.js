@@ -23,6 +23,12 @@ function App() {
     setAppointment(newAppointments)
   }
 
+  // Cargar condicionalmente un título
+  const title =
+    Object.keys(appointments).length === 0
+      ? 'No hay citas'
+      : 'Administrar las citas aquí'
+
   return (
     <Fragment>
       <h1>Administrador de pacientes</h1>
@@ -32,6 +38,7 @@ function App() {
             <Form createAppointment={createAppointment} />
           </div>
           <div className='one-half column'>
+            <h2>{title}</h2>
             {appointments.map((appointment, index) => (
               <Appointment
                 key={index}
