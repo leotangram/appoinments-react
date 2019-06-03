@@ -12,6 +12,8 @@ function App() {
     // Tomar una copia del state y agregar una nueva cita
     const newAppointments = [...appointments, appointment]
     console.log(newAppointments)
+    // Almacenamos en el state
+    setAppointment(newAppointments)
   }
 
   return (
