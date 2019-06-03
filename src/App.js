@@ -1,12 +1,18 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState, Fragment, useEffect } from 'react'
 import Form from './components/Form'
 import Appointment from './components/Appointment'
 
 function App() {
+  // Cargar las citas del storage como state inicial
+  let initialAppointments = JSON.parse(localStorage.getItem('appointments'))
+  if (!initialAppointments) {
+    initialAppointments = []
+  }
+
   // useState retorna 2 funciones
   // El state actual = this.state
   // Función que actualiza el state = this.setState({})
-  const [appointments, setAppointment] = useState([])
+  const [appointments, setAppointment] = useState(initialAppointments)
 
   // Agregar las nuevas citas al state
   const createAppointment = appointment => {
@@ -22,6 +28,15 @@ function App() {
     newAppointments.splice(index, 1)
     setAppointment(newAppointments)
   }
+
+  useEffect(() => {
+    let initialAppointments = JSON.parse(localStorage.getItem('appointments'))
+    if (initialAppointments) {
+      localStorage.setItem('appointments', JSON.stringify(appointments))
+    } else {
+      localStorage.setItem('appointments', JSON.stringify([]))
+    }
+  }, [appointments])
 
   // Cargar condicionalmente un título
   const title =
