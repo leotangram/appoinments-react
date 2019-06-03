@@ -1,14 +1,19 @@
 import React, { Fragment, useState } from 'react'
 
 function Form({ createAppointment }) {
-  const [appointment, setAppointment] = useState({
+  const initialState = {
     pet: '',
     owner: '',
     date: '',
     time: '',
     symptom: ''
-  })
+  }
 
+  // appointment = state actual
+  // setAppointment = función para cambiar el state
+  const [appointment, setAppointment] = useState(initialState)
+
+  // Actualiza el state
   const updateState = e => {
     setAppointment({
       ...appointment,
@@ -16,11 +21,13 @@ function Form({ createAppointment }) {
     })
   }
 
+  // Pasamos la cita al componente principal
   const sendAppointment = e => {
     e.preventDefault()
     // Pasar la cita hacia el componente principal
     createAppointment(appointment)
     // Reiniciar el state (reiniciar el form)
+    setAppointment(initialState)
   }
 
   return (
@@ -35,6 +42,7 @@ function Form({ createAppointment }) {
           className='u-full-width'
           placeholder='Nombre Mascota'
           onChange={updateState}
+          value={appointment.pet}
         />
 
         <label>Nombre Dueño</label>
@@ -44,6 +52,7 @@ function Form({ createAppointment }) {
           className='u-full-width'
           placeholder='Nombre Dueño de la Mascota'
           onChange={updateState}
+          value={appointment.owner}
         />
 
         <label>Fecha</label>
@@ -52,6 +61,7 @@ function Form({ createAppointment }) {
           className='u-full-width'
           name='date'
           onChange={updateState}
+          value={appointment.date}
         />
 
         <label>Hora</label>
@@ -60,6 +70,7 @@ function Form({ createAppointment }) {
           className='u-full-width'
           name='time'
           onChange={updateState}
+          value={appointment.time}
         />
 
         <label>Sintomas</label>
@@ -67,6 +78,7 @@ function Form({ createAppointment }) {
           className='u-full-width'
           name='symptom'
           onChange={updateState}
+          value={appointment.symptom}
         />
 
         <button type='submit' className='button-primary u-full-width'>
