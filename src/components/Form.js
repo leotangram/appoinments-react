@@ -1,6 +1,23 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 
 function Form() {
+  const [appointment, setAppointment] = useState({
+    pet: '',
+    owner: '',
+    date: '',
+    time: '',
+    symptom: ''
+  })
+
+  const updateState = e => {
+    setAppointment({
+      ...appointment,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  console.log(appointment)
+
   return (
     <Fragment>
       <h2>Crear Cita</h2>
@@ -12,6 +29,7 @@ function Form() {
           name='pet'
           className='u-full-width'
           placeholder='Nombre Mascota'
+          onChange={updateState}
         />
 
         <label>Nombre Dueño</label>
