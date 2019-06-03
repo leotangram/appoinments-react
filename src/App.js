@@ -1,5 +1,6 @@
 import React, { useState, Fragment } from 'react'
 import Form from './components/Form'
+import Appointment from './components/Appointment'
 
 function App() {
   // useState retorna 2 funciones
@@ -11,7 +12,6 @@ function App() {
   const createAppointment = appointment => {
     // Tomar una copia del state y agregar una nueva cita
     const newAppointments = [...appointments, appointment]
-    console.log(newAppointments)
     // Almacenamos en el state
     setAppointment(newAppointments)
   }
@@ -24,7 +24,15 @@ function App() {
           <div className='one-half column'>
             <Form createAppointment={createAppointment} />
           </div>
-          <div className='one-half column' />
+          <div className='one-half column'>
+            {appointments.map((appointment, index) => (
+              <Appointment
+                key={index}
+                index={index}
+                appointment={appointment}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </Fragment>

@@ -18,7 +18,6 @@ function Form({ createAppointment }) {
 
   const sendAppointment = e => {
     e.preventDefault()
-    console.log(appointment)
     // Pasar la cita hacia el componente principal
     createAppointment(appointment)
     // Reiniciar el state (reiniciar el form)
