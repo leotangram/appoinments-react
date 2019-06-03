@@ -16,6 +16,13 @@ function App() {
     setAppointment(newAppointments)
   }
 
+  // ELimina las citas del state
+  const deleteAppointment = index => {
+    const newAppointments = [...appointments]
+    newAppointments.splice(index, 1)
+    setAppointment(newAppointments)
+  }
+
   return (
     <Fragment>
       <h1>Administrador de pacientes</h1>
@@ -30,6 +37,7 @@ function App() {
                 key={index}
                 index={index}
                 appointment={appointment}
+                deleteAppointment={deleteAppointment}
               />
             ))}
           </div>

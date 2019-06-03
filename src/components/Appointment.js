@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Appointment({ appointment }) {
+function Appointment({ appointment, index, deleteAppointment }) {
   return (
     <div className='appointment'>
       <p>
@@ -18,6 +18,13 @@ function Appointment({ appointment }) {
       <p>
         Síntomas: <span>{appointment.symptom}</span>
       </p>
+      <button
+        onClick={() => deleteAppointment(index)}
+        type='button'
+        className='button delete u-full-width'
+      >
+        Eliminar X
+      </button>
     </div>
   )
 }
