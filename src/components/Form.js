@@ -38,16 +38,31 @@ function Form() {
           name='owner'
           className='u-full-width'
           placeholder='Nombre Dueño de la Mascota'
+          onChange={updateState}
         />
 
         <label>Fecha</label>
-        <input type='date' className='u-full-width' name='date' />
+        <input
+          type='date'
+          className='u-full-width'
+          name='date'
+          onChange={updateState}
+        />
 
         <label>Hora</label>
-        <input type='time' className='u-full-width' name='time' />
+        <input
+          type='time'
+          className='u-full-width'
+          name='time'
+          onChange={updateState}
+        />
 
         <label>Sintomas</label>
-        <textarea className='u-full-width' name='symptom' />
+        <textarea
+          className='u-full-width'
+          name='symptom'
+          onChange={updateState}
+        />
 
         <button type='submit' className='button-primary u-full-width'>
           Agregar
