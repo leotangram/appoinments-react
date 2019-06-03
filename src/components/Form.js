@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react'
 
-function Form() {
+function Form({ createAppointment }) {
   const [appointment, setAppointment] = useState({
     pet: '',
     owner: '',
@@ -16,13 +16,19 @@ function Form() {
     })
   }
 
-  console.log(appointment)
+  const sendAppointment = e => {
+    e.preventDefault()
+    console.log(appointment)
+    // Pasar la cita hacia el componente principal
+    createAppointment(appointment)
+    // Reiniciar el state (reiniciar el form)
+  }
 
   return (
     <Fragment>
       <h2>Crear Cita</h2>
 
-      <form>
+      <form onSubmit={sendAppointment}>
         <label>Nombre Mascota</label>
         <input
           type='text'
